@@ -2425,14 +2425,16 @@ public class pro1 {
 		}
 		if (now.type.equals("while")){
 			instr_set ans = new instr_set();
-			simple_instr tag1,tag2;
+			simple_instr tag1,tag2,tag3;
 			tag1 = new simple_instr();
 			tag2 = new simple_instr();
+			tag3 = new simple_instr();
 			tag1.setTag();
 			tag2.setTag();
+			tag3.setTag();
 
 			break_tag.add(tag2);
-			continue_tag.add(tag1);
+			continue_tag.add(tag3);
 
 			instr_set res0 = dfs7(now.son.get(0),i+1);
 			instr_set res1 = dfs7(now.son.get(1),i+1);
@@ -2444,10 +2446,11 @@ public class pro1 {
 			instr.addr1 = simple_addr.tag_new(tag2.tag_num);
 
 			ans.list.add(instr);
-
 			ans.list.add(tag1);
+
 			ans.list.addAll(res1.list);
 			res0 = dfs7(now.son.get(0),i+1);
+			ans.list.add(tag3);
 			ans.list.addAll(res0.list);
 
 			instr = new simple_instr();
