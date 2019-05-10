@@ -263,11 +263,11 @@ public class pro1 {
 		if (now.has_scope){
 			scope_info.add(now);
 		}
-//		System.err.print(now.type);
-//		System.err.print(" ");
-//		System.err.print(now.name);
-//		System.err.print(" ");
-//		System.err.println(scope_info.size());
+		System.err.print(now.type);
+		System.err.print(" ");
+		System.err.print(now.name);
+		System.err.print(" ");
+		System.err.println(scope_info.size());
 		if (now.type.equals("variable")|| now.type.equals("input_variable")){
 			//scope_info.get(scope_info.size()-1).scope.get(now.son.get(1).name).activate =true;
 			//Nothing to do
@@ -619,6 +619,7 @@ public class pro1 {
 						for (int j = 0; j < func_space.input_variable_type.size(); ++j) {
 							if (!(func_space.input_variable_type.get(j).equals(now.son.get(j + 1).data_type) &&
 									func_space.input_variable_array_dim.get(j) == now.son.get(j + 1).data_array_dim)) {
+								if (!(now.son.get(j + 1).data_type.equals("null")&&now.son.get(j + 1).data_array_dim==0))
 								throw new Exception("function Error2");
 							}
 						}
@@ -694,6 +695,9 @@ public class pro1 {
 						for (int k = 0; k < func_namespace.input_variable_type.size(); ++k) {
 							if (!(func_namespace.input_variable_type.get(k).equals(now.son.get(k + 1).data_type) &&
 									func_namespace.input_variable_array_dim.get(k) == now.son.get(k + 1).data_array_dim)) {
+								//System.out.println(func_namespace.input_variable_type.get(k));
+								//System.out.println(now.son.get(k + 1).data_type);
+								if (!(now.son.get(k+1).data_type.equals("null")&&now.son.get(k + 1).data_array_dim==0))
 								throw new Exception("function Error5");
 							}
 						}
